@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background: ${(props) => props.bgColorMain};
   display: grid;
@@ -13,4 +13,8 @@ export const Wrapper = styled.div`
 export const Borad = styled.div`
   width: 541px;
   height: 721px;
+  @media screen and (max-width: 500px) {
+    width: 80vw;
+    min-height: 667px;
+  }
 `;

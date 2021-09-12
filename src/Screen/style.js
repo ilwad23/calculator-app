@@ -10,10 +10,11 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 87px;
+  }
 `;
 export const Number = styled.h1`
-margin-right: 30px;
-
+  margin-right: 30px;
 `;
-
-

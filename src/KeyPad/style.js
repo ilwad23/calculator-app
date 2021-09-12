@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -9,9 +9,15 @@ export const Wrapper = styled.div`
   height: 482px;
   margin-top: 30px;
   padding: 30px;
-  background: ${(props) => (props.theme.mainBg )};
+  background: ${(props) => props.theme.mainBg};
   border-radius: 10px;
-`;
+  @media screen and (max-width: 500px) {
+    margin-top: 25px;
+    grid-gap: 10px;
+    width: 100%;
+    height: 419px;
+  }
+  `;
 export const Key = styled.div`
   left: 157px;
   top: 297px;
@@ -29,18 +35,25 @@ export const Key = styled.div`
     css`
       background: #637097;
       box-shadow: 0px 4px 4px #444b5a;
-      background: ${(props) => (props.theme.secKBg)};
-      box-shadow: ${(props) =>
-        props.theme.secKBgSw};
-      color: ${(props) => (props.theme.secKColor)};
-    `};
-  ${(props) =>
+      background: ${(props) => props.theme.secKBg};
+      box-shadow: ${(props) => props.theme.secKBgSw};
+      color: ${(props) => props.theme.secKColor};
+      `};
+      ${(props) =>
     props.bigO &&
     css`
       grid-column: 3/5;
-      color: ${(props) => (props.theme.thirdKColor)};
-      background: ${(props) => (props.theme.thirdKBg)};
-      box-shadow: ${(props) =>
-        props.theme.thirdKBgSw};
-    `};
-`;
+      color: ${(props) => props.theme.thirdKColor};
+      background: ${(props) => props.theme.thirdKBg};
+      box-shadow: ${(props) => props.theme.thirdKBgSw};
+      `};
+      &:active {
+        opacity: 0.5;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 28px;
+      }
+      @media screen and (max-width: 300px) {
+        font-size: 21px;
+      }
+      `;
