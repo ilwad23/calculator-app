@@ -39,31 +39,41 @@ const theme3 = {
   thirdKColor: "hsl(198, 20%, 13%)",
 };
 function KeyPad() {
-  const themes = {1:theme1,2:theme2,3:theme3}
-  const [{ toggle }, _] = useStateValue(); 
+  const themes = { 1: theme1, 2: theme2, 3: theme3 };
+  const [{ toggle }, dispatch] = useStateValue();
+  function addNumber(num) {
+    dispatch({ type: "CHANGE_NUMBER", number: num });
+  }
+  function addOperator(op) {
+    dispatch({ type: "PLACE_OPERATOR", operator: op });
+  }
   return (
     <ThemeProvider theme={themes[toggle]}>
       <Wrapper>
-        <Key>7</Key>
-        <Key>8</Key>
-        <Key>9</Key>
-        <Key blue>DEL</Key>
-        <Key>4</Key>
-        <Key>5</Key>
-        <Key>6</Key>
-        <Key>+</Key>
-        <Key>1</Key>
-        <Key>2</Key>
-        <Key>3</Key>
-        <Key>-</Key>
-        <Key>.</Key>
-        <Key>0</Key>
-        <Key>/</Key>
-        <Key>x</Key>
-        <Key blue bigB>
+        <Key onClick={() => addNumber(7)}>7</Key>
+        <Key onClick={() => addNumber(8)}>8</Key>
+        <Key onClick={() => addNumber(9)}>9</Key>
+        <Key onClick={() => dispatch({ type: "DELETE_NUMBER" })} blue>
+          DEL
+        </Key>
+        <Key onClick={() => addNumber(4)}>4</Key>
+        <Key onClick={() => addNumber(5)}>5</Key>
+        <Key onClick={() => addNumber(6)}>6</Key>
+        <Key onClick={() => addOperator("+")}>+</Key>
+        <Key onClick={() => addNumber(1)}>1</Key>
+        <Key onClick={() => addNumber(2)}>2</Key>
+        <Key onClick={() => addNumber(3)}>3</Key>
+        <Key onClick={() => addOperator("-")}>-</Key>
+        <Key onClick={() => addNumber(".")}>.</Key>
+        <Key onClick={() => addNumber(0)}>0</Key>
+        <Key onClick={() => addOperator("/")}>/</Key>
+        <Key onClick={() => addOperator("x")}>x</Key>
+        <Key onClick={() => dispatch({ type: "RESET" })} blue bigB>
           RESET
         </Key>
-        <Key bigO>=</Key>
+        <Key onClick={() => dispatch({ type: "EQUAL" })} bigO>
+          =
+        </Key>
       </Wrapper>
     </ThemeProvider>
   );

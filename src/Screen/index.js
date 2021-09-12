@@ -16,14 +16,15 @@ const theme3 = {
 }; 
 function Screen() {
     const themes = { 1: theme1, 2: theme2, 3: theme3 };
-    const [{ toggle }, _] = useStateValue(); 
+    const [{ toggle, number }, _] = useStateValue(); 
+    const formatter = new Intl.NumberFormat('en')
   return (
-      <ThemeProvider theme={themes[toggle]}>
-        <Wrapper>
-          <Number>399,981</Number>  
-        </Wrapper>
-      </ThemeProvider>
-    )
+    <ThemeProvider theme={themes[toggle]}>
+      <Wrapper>
+        <Number>{formatter.format(number)}</Number>
+      </Wrapper>
+    </ThemeProvider>
+  );
 }
 
 export default Screen
