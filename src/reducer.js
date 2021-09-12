@@ -3,6 +3,7 @@ export const initialState = {
   previousNumber: "0",
   number: "0",
   operator: "",
+  answer: "",
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -12,9 +13,15 @@ const reducer = (state, action) => {
         toggle: action.toggle,
       };
     case "CHANGE_NUMBER":
+      let num;
+      if (state.answer) {
+        num = action.number;
+      } else {
+        num = state.number + action.number;
+      }
       return {
         ...state,
-        number: state.number + action.number,
+        number: num,
       };
     case "DELETE_NUMBER":
       return {
@@ -54,6 +61,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         number: ans,
+        answer: true,
       };
   }
 };
